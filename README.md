@@ -6,7 +6,7 @@ All pricing is deterministic and grounded in a Gaussian Process posterior.
 ## How it works
 
 1. **Vision gate** — First, each photo is checked using a Vision LLM to determine
-   whether this is a usable image of a commercial truck. Non-trucks, blurry shots,
+   whether it is a usable image of a commercial truck. Non-trucks, blurry shots,
    and bad angles are rejected.
 
 2. **Feature extraction** — The Vision LLM analyzes accepted photos,
@@ -31,21 +31,80 @@ All pricing is deterministic and grounded in a Gaussian Process posterior.
    comps are found by Euclidean distance in the scaled feature space and shown
    to the user with similarity scores, making the pricing explainable to the user.
 
-7. **Active evidence loop** — after each photo, the system identifies the
-   single most valuable missing observation and asks for it by name.
-   The range narrows as evidence improves.
+6. **Confidence scoring** - Confidence is calculated using 0.40 x GP_certainty +
+   0.25 x identity_certainty + 0.20 x coverage_score + 0.15_comp_density where
+   GP_certainty = max(0,1 - log_std/0.5). Confidence capped at 94%.
 
-## Supports all commercial truck classes
+7. **Photo recommendations** - After pricing, the system calls the LLM a third time
+   with the current feature dictionary, the uncertainty, and a list of missing
+   inspection area. The model returns which single photo would reduce the uncertainty
+   by the greatest amount and provide the model with the  information that would inform
+   its next decision the most in JSON format. The system tracks coverage of 10 inspection
+   areas (identity, front, rear, both sides, tires, interior, odometer, engine bay, and
+   underside) so that redundant photos don't move the confidence. Coverage adapts to truck
+   class.
 
-Pickups · Semi / 18-wheelers · Box trucks · Flatbeds · Dump trucks ·
-Tankers · Tow trucks · Utility trucks · Refrigerated trucks
 
 ## Running locally
 
-Requires Python 3.8+, scikit-learn, and numpy.
+**Requirements:** Python 3.8+, scikit-learn, numpy. No other dependencies.
 
 ```bash
 pip install scikit-learn numpy
 ```
 
-Add your API key to `.env`:
+Open the .env file and paste your API key. The file has instructions for
+which line to edit depending on your provider (Gemini, Groq, or OpenAI):
+
+
+Place your `comps.csv` file in the same folder as `server.py`. A sample
+dataset of 46 listings is included to demonstrate the necessary
+formatting. Replace it with your own data.
+
+Start the server:
+
+```bash
+python3 server.py
+```
+
+Open **http://localhost:8001** in any browser. 
+
+**Offline demo mode** — runs the full pipeline with canned responses, no
+API calls, no internet required. Useful for demos on unreliable networks:
+
+```bash
+# Mac / Linux
+TRUCKVAL_MOCK=1 python3 server.py
+
+# Windows
+set TRUCKVAL_MOCK=1
+python3 server.py
+```
+
+The interface displays a banner when mock mode is active.
+
+**To change the port:**
+
+```bash
+# Mac / Linux
+PORT=8080 python3 server.py
+
+# Windows
+set PORT=8080
+python3 server.py
+```
+
+---
+
+## Stack
+
+| Layer | Technology | Notes |
+|---|---|---|
+| Vision LLM | Google Gemini 3.6 Flash | Free tier — swappable to Groq or OpenAI by changing one line in `.env` |
+| Pricing model | scikit-learn `GaussianProcessRegressor` | Matérn(ν=2.5) kernel, WhiteKernel noise, log-price space |
+| Comp dataset | `comps.csv` | Plain CSV, hand-curated — no external pricing API |
+| Backend | Python 3.8+ stdlib `http.server` | No framework, no database, no pip installs beyond sklearn/numpy |
+| Frontend | Vanilla JS + HTML + CSS | No framework, no build step, no CDN dependencies for logic |
+| Session state | In-memory Python dict | No persistence — sessions live for the life of the server process |
+| Languages | English / Turkish | Full UI translation toggle built into the frontend |
+| Deployment | `python3 server.py` | Runs on any machine with Python 3.8+, including localhost |

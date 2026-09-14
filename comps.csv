@@ -1,0 +1,47 @@
+year,make,model,truck_class,mileage,price,condition,cab_type,transmission
+2019,Freightliner,Cascadia,semi,487000,44500,good,sleeper,automatic
+2016,Kenworth,T680,semi,612000,31000,fair,day_cab,manual
+2021,Peterbilt,579,semi,290000,78000,excellent,sleeper,automatic
+2018,Volvo,VNL 860,semi,401000,52000,good,sleeper,automatic
+2015,Mack,Pinnacle,semi,710000,24000,poor,sleeper,manual
+2020,Western Star,4900FA,semi,198000,89000,excellent,day_cab,automatic
+2017,International,LT625,semi,534000,37000,fair,sleeper,automatic
+2014,Kenworth,T700,semi,820000,19500,poor,sleeper,manual
+2022,Freightliner,Cascadia,semi,112000,98000,excellent,sleeper,automatic
+2019,Peterbilt,389,semi,362000,67000,good,sleeper,manual
+2016,Volvo,VNL 670,semi,589000,29000,fair,sleeper,automatic
+2018,Kenworth,T680,semi,445000,51000,good,sleeper,automatic
+2020,Freightliner,Cascadia,day_cab,287000,61000,excellent,day_cab,automatic
+2017,Peterbilt,579,day_cab,398000,43000,good,day_cab,automatic
+2015,Kenworth,T660,day_cab,501000,27000,fair,day_cab,manual
+2018,Ford,F-150,pickup,94000,28500,good,crew_cab,automatic
+2015,Ford,F-250,pickup,187000,19000,fair,regular_cab,manual
+2020,Ram,1500,pickup,61000,37000,excellent,crew_cab,automatic
+2017,Chevrolet,Silverado 1500,pickup,132000,22000,good,crew_cab,automatic
+2019,Ford,F-350,pickup,78000,44000,excellent,crew_cab,automatic
+2016,GMC,Sierra 2500,pickup,201000,18500,fair,extended_cab,automatic
+2021,Ram,2500,pickup,42000,51000,excellent,crew_cab,automatic
+2014,Ford,F-150,pickup,238000,14000,poor,regular_cab,manual
+2018,Toyota,Tacoma,pickup,89000,32000,good,crew_cab,automatic
+2020,Ford,F-250,pickup,54000,48000,excellent,crew_cab,automatic
+2017,Isuzu,NPR,box_truck,143000,22000,good,cab_over,automatic
+2014,Hino,268,box_truck,231000,14500,fair,cab_over,automatic
+2019,Ford,F-750,box_truck,88000,51000,excellent,regular_cab,automatic
+2016,International,4300,box_truck,198000,19000,good,regular_cab,automatic
+2020,Mercedes-Benz,Sprinter,box_truck,67000,44000,excellent,regular_cab,automatic
+2015,Isuzu,NRR,box_truck,289000,13000,poor,cab_over,automatic
+2018,Hino,338,box_truck,112000,31000,good,cab_over,automatic
+2021,Freightliner,M2 106,box_truck,54000,58000,excellent,regular_cab,automatic
+2016,International,4300,flatbed,198000,26000,good,regular_cab,manual
+2020,Kenworth,T370,flatbed,112000,47000,good,regular_cab,automatic
+2018,Ford,F-650,flatbed,142000,38000,good,regular_cab,automatic
+2015,International,7400,flatbed,287000,21000,fair,regular_cab,manual
+2021,Ram,5500,flatbed,38000,62000,excellent,crew_cab,automatic
+2017,Chevrolet,Silverado 3500,flatbed,167000,24000,fair,regular_cab,automatic
+2019,Ford,F-750,flatbed,89000,54000,excellent,regular_cab,automatic
+2013,Mack,Granite,dump_truck,334000,38000,fair,regular_cab,manual
+2018,International,HV607,dump_truck,198000,67000,good,regular_cab,automatic
+2016,Kenworth,T800,dump_truck,412000,44000,fair,regular_cab,manual
+2021,Mack,Granite,dump_truck,78000,98000,excellent,regular_cab,automatic
+2015,Ford,F-750,dump_truck,289000,24000,poor,regular_cab,manual
+2019,Peterbilt,367,dump_truck,145000,78000,good,regular_cab,automatic

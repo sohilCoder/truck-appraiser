@@ -53,8 +53,14 @@ All pricing is deterministic and grounded in a Gaussian Process posterior.
 pip install scikit-learn numpy
 ```
 
-Open the .env file and paste your API key. The file has instructions for
-which line to edit depending on your provider (Gemini, Groq, or OpenAI):
+Copy `.env.example` to a new file called `.env` and paste your API key
+into the correct line for your provider. The file has instructions for
+which line to edit depending on your provider (Gemini, Groq, or OpenAI).
+
+```bash
+cp .env.example .env
+```
+
 
 
 Place your `comps.csv` file in the same folder as `server.py`. A sample
